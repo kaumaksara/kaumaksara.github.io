@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bab 1 — Kaum Aksara</title>
   <style>
+        .isi-cerita {
+      -webkit-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
     :root {
       --bg-color: #111113;
       --surface-color: #19191d;
@@ -104,7 +109,7 @@
     }
   </style>
 </head>
-<body>
+<body oncontextmenu="return false;">
 
   <div class="nav-atas">
     <a href="index.html">← Daftar Bab</a>
@@ -158,6 +163,12 @@ Mendadak ia panik, terlebih arah yang dituju bukan ke kota, tapi masuk ke dalam 
       localStorage.setItem('theme', isLight ? 'light' : 'dark');
       toggleBtn.textContent = isLight ? '☾ Mode Gelap' : '☀ Mode Terang';
     }
+        document.addEventListener('keydown', function(e) {
+      if (e.ctrlKey && (e.key === 'c' || e.key === 'C' || e.key === 'u' || e.key === 'U' || e.key === 's' || e.key === 'S')) {
+        e.preventDefault();
+      }
+    });
+
   </script>
 </body>
 </html>
