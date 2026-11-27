@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kaum Aksara — Ruang Baca Mandiri</title>
+  <link rel="manifest" href="manifest.json">
+  <style>
+    body {
+      font-family: Georgia, serif;
+      background-color: #faf8f5;
+      color: #2b2b2b;
+      max-width: 650px;
+      margin: 0 auto;
+      padding: 20px;
+      line-height: 1.8;
+    }
+    header { text-align: center; padding: 30px 0; border-bottom: 1px solid #ddd; }
+    h1 { margin-bottom: 5px; font-size: 1.8rem; }
+    .daftar-bab { list-style: none; padding: 0; }
+    .daftar-bab li { margin: 15px 0; padding: 15px; background: #fff; border-radius: 8px; border: 1px solid #eee; }
+    .daftar-bab a { text-decoration: none; color: #1a1a1a; font-weight: bold; display: block; }
+    .tag-gratis { font-size: 0.75rem; background: #e6f4ea; color: #137333; padding: 2px 8px; border-radius: 4px; }
+    .tag-early { font-size: 0.75rem; background: #fef7e0; color: #b06000; padding: 2px 8px; border-radius: 4px; }
+    .box-dukungan { margin-top: 40px; padding: 20px; background: #fff; border-radius: 8px; text-align: center; border: 1px dashed #ccc; }
+    .btn-traktir { display: inline-block; margin-top: 10px; padding: 10px 20px; background: #2b2b2b; color: #fff; text-decoration: none; border-radius: 6px; font-family: sans-serif; font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Kaum Aksara</h1>
+    <p>Ruang baca fiksi mandiri • Bebas iklan</p>
+  </header>
+
+  <main>
+    <p><em>Selamat datang di ruang baca pribadiku. Seluruh bab utama dirilis gratis secara berkala.</em></p>
+
+    <h3>Daftar Cerita & Bab</h3>
+    <ul class="daftar-bab">
+      <li>
+        <a href="bab-1.html">Bab 1: Awal Mula <span class="tag-gratis">Gratis</span></a>
+      </li>
+      <li>
+        <a href="#dukungan">Bab 2: Segera Hadir <span class="tag-early">Early Access</span></a>
+      </li>
+    </ul>
+
+    <div id="dukungan" class="box-dukungan">
+      <p>Menikmati ceritanya? Kamu bisa bantu penulis tetap berkarya lewat traktiran kopi atau akses bab lebih awal:</p>
+      <a href="https://trakteer.id" class="btn-traktir" target="_blank">Traktir Penulis</a>
+    </div>
+  </main>
+
+</body>
+</html>
