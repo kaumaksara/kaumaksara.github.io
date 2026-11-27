@@ -3,59 +3,263 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kaum Aksara — Ruang Baca Mandiri</title>
+  <title>Kaum Aksara — Arsip Cerita Mandiri</title>
   <link rel="manifest" href="manifest.json">
   <style>
+    :root {
+      /* Default: Dark Mode (Dark Academia) */
+      --bg-color: #111113;
+      --surface-color: #19191d;
+      --text-main: #e6e1d6;
+      --text-muted: #9a9488;
+      --accent: #c5a059;
+      --border-color: #2a2a30;
+      --tag-free-bg: rgba(74, 158, 108, 0.15);
+      --tag-free-text: #6fcf97;
+      --tag-early-bg: rgba(197, 160, 89, 0.15);
+      --tag-early-text: #d4b475;
+    }
+
+    body.light-mode {
+      /* Opsi Mode Putih / Kertas Gading */
+      --bg-color: #faf8f5;
+      --surface-color: #ffffff;
+      --text-main: #222222;
+      --text-muted: #666666;
+      --accent: #8c6239;
+      --border-color: #e5e0d8;
+      --tag-free-bg: #e6f4ea;
+      --tag-free-text: #137333;
+      --tag-early-bg: #fef7e0;
+      --tag-early-text: #b06000;
+    }
+
     body {
-      font-family: Georgia, serif;
-      background-color: #faf8f5;
-      color: #2b2b2b;
-      max-width: 650px;
+      font-family: 'Georgia', serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      max-width: 640px;
       margin: 0 auto;
       padding: 20px;
-      line-height: 1.8;
+      line-height: 1.85;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
-    header { text-align: center; padding: 30px 0; border-bottom: 1px solid #ddd; }
-    h1 { margin-bottom: 5px; font-size: 1.8rem; }
-    .daftar-bab { list-style: none; padding: 0; }
-    .daftar-bab li { margin: 15px 0; padding: 15px; background: #fff; border-radius: 8px; border: 1px solid #eee; }
-    .daftar-bab a { text-decoration: none; color: #1a1a1a; font-weight: bold; display: block; }
-    .tag-gratis { font-size: 0.75rem; background: #e6f4ea; color: #137333; padding: 2px 8px; border-radius: 4px; }
-    .tag-early { font-size: 0.75rem; background: #fef7e0; color: #b06000; padding: 2px 8px; border-radius: 4px; }
-    .box-dukungan { margin-top: 40px; padding: 20px; background: #fff; border-radius: 8px; text-align: center; border: 1px dashed #ccc; }
-    .btn-traktir { display: inline-block; margin-top: 10px; padding: 10px 20px; background: #2b2b2b; color: #fff; text-decoration: none; border-radius: 6px; font-family: sans-serif; font-size: 0.9rem; }
+
+    .top-bar {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 10px;
+    }
+
+    .theme-btn {
+      background: var(--surface-color);
+      color: var(--text-muted);
+      border: 1px solid var(--border-color);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-family: sans-serif;
+      font-size: 0.78rem;
+      cursor: pointer;
+      letter-spacing: 0.5px;
+      transition: all 0.2s ease;
+    }
+
+    .theme-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    header {
+      text-align: center;
+      padding: 35px 0 30px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .subtitle {
+      font-family: sans-serif;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 2.5px;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2.1rem;
+      font-weight: normal;
+      letter-spacing: 0.5px;
+    }
+
+    .tagline {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      margin-top: 8px;
+    }
+
+    .intro {
+      margin: 28px 0;
+      color: var(--text-muted);
+      font-style: italic;
+      text-align: center;
+      font-size: 0.98rem;
+    }
+
+    h3 {
+      font-family: sans-serif;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--text-muted);
+      margin-top: 35px;
+      margin-bottom: 15px;
+    }
+
+    .daftar-bab {
+      list-style: none;
+      padding: 0;
+    }
+
+    .daftar-bab li {
+      margin: 12px 0;
+      background: var(--surface-color);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      transition: border-color 0.2s ease, transform 0.15s ease;
+    }
+
+    .daftar-bab li:hover {
+      border-color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .daftar-bab a {
+      padding: 16px 18px;
+      text-decoration: none;
+      color: var(--text-main);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .bab-title {
+      font-size: 1.02rem;
+    }
+
+    .tag-gratis {
+      font-family: sans-serif;
+      font-size: 0.7rem;
+      background: var(--tag-free-bg);
+      color: var(--tag-free-text);
+      padding: 3px 9px;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+
+    .tag-early {
+      font-family: sans-serif;
+      font-size: 0.7rem;
+      background: var(--tag-early-bg);
+      color: var(--tag-early-text);
+      padding: 3px 9px;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+
+    .box-dukungan {
+      margin-top: 45px;
+      padding: 25px 20px;
+      background: var(--surface-color);
+      border-radius: 8px;
+      text-align: center;
+      border: 1px solid var(--border-color);
+    }
+
+    .box-dukungan p {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      margin-top: 0;
+    }
+
+    .btn-traktir {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 10px 24px;
+      background: transparent;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      text-decoration: none;
+      border-radius: 4px;
+      font-family: sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.8px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-traktir:hover {
+      background: var(--accent);
+      color: #111113;
+    }
   </style>
 </head>
 <body>
 
+  <div class="top-bar">
+    <button class="theme-btn" id="themeToggle" onclick="toggleTheme()">☀ Mode Terang</button>
+  </div>
+
   <header>
+    <div class="subtitle">Arsip Fiksi Mandiri</div>
     <h1>Kaum Aksara</h1>
-    <p>Ruang baca fiksi mandiri • Bebas iklan</p>
+    <p class="tagline">Ruang baca bebas iklan • Gelap & tenang</p>
   </header>
 
   <main>
-    <p><em>Selamat datang di ruang baca pribadiku. Seluruh bab utama dirilis gratis secara berkala.</em></p>
+    <p class="intro">“Setiap kisah menyimpan rahasia yang menunggu untuk dibuka. Seluruh bab utama dirilis gratis secara berkala.”</p>
 
-    <h3>Daftar Cerita & Bab</h3>
+    <h3>Daftar Bab</h3>
     <ul class="daftar-bab">
       <li>
-        <a href="bab-1.html">Bab 1: Awal Mula <span class="tag-gratis">Gratis</span></a>
+        <a href="bab-1.html">
+          <span class="bab-title">Bab 1: Awal Mula</span>
+          <span class="tag-gratis">Gratis</span>
+        </a>
       </li>
       <li>
-        <a href="#dukungan">Bab 2: Segera Hadir <span class="tag-early">Early Access</span></a>
+        <a href="#dukungan">
+          <span class="bab-title">Bab 2: Segera Hadir</span>
+          <span class="tag-early">Early Access</span>
+        </a>
       </li>
     </ul>
 
     <div id="dukungan" class="box-dukungan">
-      <p>Menikmati ceritanya? Kamu bisa bantu penulis tetap berkarya lewat traktiran kopi atau akses bab lebih awal:</p>
+      <p>Menikmati suasana di ruang baca ini? Dukung penulis tetap berkarya atau buka akses bab lebih awal:</p>
       <a href="https://trakteer.id" class="btn-traktir" target="_blank">Traktir Penulis</a>
     </div>
   </main>
+
   <script>
+    // Cek preferensi tema tersimpan (default tetap dark mode)
+    const savedTheme = localStorage.getItem('theme');
+    const toggleBtn = document.getElementById('themeToggle');
+
+    if (savedTheme === 'light') {
+      document.body.classList.add('light-mode');
+      toggleBtn.textContent = '☾ Mode Gelap';
+    }
+
+    function toggleTheme() {
+      document.body.classList.toggle('light-mode');
+      const isLight = document.body.classList.contains('light-mode');
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+      toggleBtn.textContent = isLight ? '☾ Mode Gelap' : '☀ Mode Terang';
+    }
+
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('/sw.js');
     }
   </script>
-
 </body>
 </html>
