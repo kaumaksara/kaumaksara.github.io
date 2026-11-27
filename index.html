@@ -51,6 +51,11 @@
       <a href="https://trakteer.id" class="btn-traktir" target="_blank">Traktir Penulis</a>
     </div>
   </main>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js');
+    }
+  </script>
 
 </body>
 </html>
